@@ -10,8 +10,7 @@ USER_DATA_SCHEME = {
     "required": ["id","email","first_name","last_name", "avatar"]
 }
 
-
-USER_DATA_SCHEME_For_Homework = {
+RESOURCE_DATA_SCHEME = {
     "type" : "object",
     "properties": {
         "id": {"type": "number"},
