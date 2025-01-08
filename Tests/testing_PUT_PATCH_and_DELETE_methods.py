@@ -20,19 +20,18 @@ BODY = {
 @allure.suite('Проверка PUT, PATCH и DELETE методов 123')
 @allure.title('Проверяем обновление пользователя PUT методом')
 def test_update_user_put_method():
-    body = BODY
     with allure.step(f'Делаем запрос по адресу {BASE_URL + UPDATE_AND_DELETE_USER}'):
-        response = httpx.put(BASE_URL + UPDATE_AND_DELETE_USER, json=body)
+        response = httpx.put(BASE_URL + UPDATE_AND_DELETE_USER, json=BODY)
     with allure.step('Проверяем код ответа метода'):
         assert response.status_code == 200
     response_json = response.json()
     updated_date = response.json()['updatedAt'].replace('T', ' ')
-    current_date = str(datetime.datetime.utcnow())
+    current_date = str(datetime.datetime.utcnow())              # Не понимаю, почему "utcnow" автоматически зачеркивается
     validate(response_json, PUT_AND_PATCH_UPDATED_USER_SCHEME)
     with allure.step('Проверяем, что "job" в ответе соответствует запросу'):
-        assert response_json['job'] == body['job']
+        assert response_json['job'] == BODY['job']
     with allure.step('Проверяем, что "name" в ответе соответствует запросу'):
-        assert response_json['name'] == body['name']
+        assert response_json['name'] == BODY['name']
     with allure.step('Проверяем, что "updatedAt" соответствует дате и времени вызова метода'):
         assert updated_date[0:16] == current_date[0:16]
     with allure.step('Проверяем окончание у "updatedAt" (в т.ч. проверяем формат Z)'):
@@ -44,9 +43,8 @@ def test_update_user_put_method():
 @allure.suite('Проверка PUT, PATCH и DELETE методов 123')
 @allure.title('Проверяем обновление пользователя PATCH методом')
 def test_update_user_patch_method():
-    body = BODY
     with allure.step(f'Делаем запрос по адресу {BASE_URL + UPDATE_AND_DELETE_USER}'):
-        response = httpx.patch(BASE_URL + UPDATE_AND_DELETE_USER, json=body)
+        response = httpx.patch(BASE_URL + UPDATE_AND_DELETE_USER, json=BODY)
     with allure.step('Проверяем код ответа метода'):
         assert response.status_code == 200
     response_json = response.json()
@@ -54,9 +52,9 @@ def test_update_user_patch_method():
     current_date = str(datetime.datetime.utcnow())
     validate(response_json, PUT_AND_PATCH_UPDATED_USER_SCHEME)
     with allure.step('Проверяем, что "job" в ответе соответствует запросу'):
-        assert response_json['job'] == body['job']
+        assert response_json['job'] == BODY['job']
     with allure.step('Проверяем, что "name" в ответе соответствует запросу'):
-        assert response_json['name'] == body['name']
+        assert response_json['name'] == BODY['name']
     with allure.step('Проверяем, что "updatedAt" соответствует дате и времени вызова метода'):
         assert updated_date[0:16] == current_date[0:16]
     with allure.step('Проверяем окончание у "updatedAt" (в т.ч. проверяем формат Z)'):

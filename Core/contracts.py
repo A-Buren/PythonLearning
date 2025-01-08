@@ -40,7 +40,6 @@ PUT_AND_PATCH_UPDATED_USER_SCHEME = {
     "properties": {
         "name": {"type": "string"},
         "job": {"type": "string"}
-        # "createdAt": {"type": "datetime"}
     },
     "required": ["name", "job"]
 }
