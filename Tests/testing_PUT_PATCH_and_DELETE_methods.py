@@ -49,7 +49,7 @@ def test_update_user_patch_method():
         assert response.status_code == 200
     response_json = response.json()
     updated_date = response.json()['updatedAt'].replace('T', ' ')
-    current_date = str(datetime.datetime.utcnow())
+    current_date = str(datetime.datetime.utcnow())              # Не понимаю, почему "utcnow" автоматически зачеркивается
     validate(response_json, PUT_AND_PATCH_UPDATED_USER_SCHEME)
     with allure.step('Проверяем, что "job" в ответе соответствует запросу'):
         assert response_json['job'] == BODY['job']
