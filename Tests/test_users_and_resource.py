@@ -20,8 +20,8 @@ PANTONE_VALUE_MASK = "-"
 @allure.suite('Проверка запросов данных пользователей')
 @allure.title('Проверяем получение данных пользователей')
 def test_list_users():
-    with allure.step(f'Делаем запрос по адресу {BASE_URL + LIST_USERS} и проверяем, что код ответа равен 200'):
-        response = httpx.get(BASE_URL + LIST_USERS)
+    with allure.step(f'Делаем запрос по адресу {BASE_URL + LIST_USERS_URL} и проверяем, что код ответа равен 200'):
+        response = httpx.get(BASE_URL + LIST_USERS_URL)
         assert response.status_code == 200
     data = response.json()['data']
 
@@ -38,8 +38,8 @@ def test_list_users():
 @allure.suite('Проверка запросов данных пользователей')
 @allure.title('Проверяем получение данных одного пользователя')
 def test_single_user():
-    with allure.step(f'Делаем запрос по адресу {BASE_URL + LIST_USERS} и проверяем, что код ответа равен 200'):
-        response = httpx.get(BASE_URL + SINGLE_USER)
+    with allure.step(f'Делаем запрос по адресу {BASE_URL + SINGLE_USER_URL} и проверяем, что код ответа равен 200'):
+        response = httpx.get(BASE_URL + SINGLE_USER_URL)
         assert response.status_code == 200
     data = response.json()['data']
 
@@ -51,8 +51,8 @@ def test_single_user():
 @allure.suite('Проверка запросов данных пользователей')
 @allure.title('Проверяем 404 при получении данных пользователя')
 def test_user_not_found():
-    with allure.step(f'Делаем запрос по адресу {BASE_URL + LIST_USERS} и проверяем, что код ответа равен 404'):
-        response = httpx.get(BASE_URL + NOT_FOUND_USER)
+    with allure.step(f'Делаем запрос по адресу {BASE_URL + NOT_FOUND_USER_URL} и проверяем, что код ответа равен 404'):
+        response = httpx.get(BASE_URL + NOT_FOUND_USER_URL)
         assert response.status_code == 404
 
 
@@ -61,8 +61,8 @@ def test_user_not_found():
 @allure.suite('Проверка запросов данных ресурсов')
 @allure.title('Проверяем получение данных ресурсов')
 def test_list_resource():
-    with allure.step(f'Делаем запрос по адресу {BASE_URL + LIST_RESOURCE} и проверяем, что метод вернет 200 код'):
-        response = httpx.get(BASE_URL + LIST_RESOURCE)
+    with allure.step(f'Делаем запрос по адресу {BASE_URL + LIST_RESOURCE_URL} и проверяем, что метод вернет 200 код'):
+        response = httpx.get(BASE_URL + LIST_RESOURCE_URL)
         assert response.status_code == 200
     data = response.json()['data']
 
@@ -78,8 +78,8 @@ def test_list_resource():
 @allure.suite('Проверка запросов данных ресурсов')
 @allure.title('Проверяем получение данных одного ресурса')
 def test_single_resource():
-    with allure.step(f'Делаем запрос по адресу {BASE_URL + SINGLE_RESOURCE} и проверяем, что метод вернет 200 код'):
-        response = httpx.get(BASE_URL + SINGLE_RESOURCE)
+    with allure.step(f'Делаем запрос по адресу {BASE_URL + SINGLE_RESOURCE_URL} и проверяем, что метод вернет 200 код'):
+        response = httpx.get(BASE_URL + SINGLE_RESOURCE_URL)
         assert response.status_code == 200
     data = response.json()['data']
     with allure.step('Проверяем, что цвет начинается с "#"'):
@@ -90,6 +90,6 @@ def test_single_resource():
 @allure.suite('Проверка запросов данных ресурсов')
 @allure.title('Проверяем 404 при получении данных ресурса')
 def test_single_resource_not_found():
-    with allure.step(f'Делаем запрос по адресу {BASE_URL + SINGLE_NOT_FOUND} и проверяем, что метод вернет 404 код'):
-        response = httpx.get(BASE_URL + SINGLE_NOT_FOUND)
+    with allure.step(f'Делаем запрос по адресу {BASE_URL + SINGLE_NOT_FOUND_URL} и проверяем, что метод вернет 404 код'):
+        response = httpx.get(BASE_URL + SINGLE_NOT_FOUND_URL)
         assert response.status_code == 404
