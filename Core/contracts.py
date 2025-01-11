@@ -29,13 +29,14 @@ CREATED_USER_SCHEME = {
         "name": {"type": "string"},
         "job": {"type": "string"},
         "id": {"type": "string"}
-        # "createdAt": {"type": "datetime"}
+        # "createdAt": {"type": "datetime"}     #Закомментировал, тк сначала сделал сам схему, а потом Рома в видео не стал включать это поле.
+                                                #Аналогично не стал добавлять подобные поля в схему UPDATE_USER_SCHEME.
     },
     "required": ["id"]
 }
 
 
-PUT_AND_PATCH_UPDATED_USER_SCHEME = {
+UPDATE_USER_SCHEME = {
     "type" : "object",
     "properties": {
         "name": {"type": "string"},
