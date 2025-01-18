@@ -26,7 +26,7 @@ def test_successful_register(users_data):
     with allure.step(f'Делаем запрос по адресу {BASE_URL + REGISTER_USER_URL} и проверяем, что код ответа равен 200'):
         assert response.status_code == 200
     validate(response.json(), REGISTERED_USER_SCHEME)
-    token = response.json()['token']
+
 
 
 
