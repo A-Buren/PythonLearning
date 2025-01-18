@@ -36,13 +36,40 @@ CREATED_USER_SCHEME = {
 }
 
 
-UPDATE_USER_SCHEME = {
+UPDATED_USER_SCHEME = {
     "type" : "object",
     "properties": {
         "name": {"type": "string"},
         "job": {"type": "string"}
     },
     "required": ["name", "job"]
+}
+
+
+REGISTERED_USER_SCHEME = {
+    "type" : "object",
+    "properties": {
+        "id": {"type": "number"},
+        "token": {"type": "string"}
+    },
+    "required": ["id", "token"]
+}
+
+
+UNSUCCESSFUL_REGISTER_SCHEME = {
+    "type" : "object",
+    "properties": {
+        "error": {"type": "string"}
+    },
+    "required": ["error"]
+}
+
+LOGIN_USER_SCHEME = {
+    "type" : "object",
+    "properties": {
+        "token": {"type": "string"}
+    },
+    "required": ["token"]
 }
 
 
