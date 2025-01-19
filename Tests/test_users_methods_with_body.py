@@ -1,7 +1,7 @@
 import httpx
 from jsonschema import validate
 from Core.contracts import CREATED_USER_SCHEME
-from Core.contracts import UPDATE_USER_SCHEME
+from Core.contracts import UPDATED_USER_SCHEME
 import datetime
 import allure
 
@@ -94,7 +94,7 @@ def test_update_user_put_method():
     response_json = response.json()
     updated_date = response.json()['updatedAt'].replace('T', ' ')
     current_date = str(datetime.datetime.utcnow())              # Не понимаю, почему "utcnow" автоматически зачеркивается
-    validate(response_json, UPDATE_USER_SCHEME)
+    validate(response_json, UPDATED_USER_SCHEME)
 
     with allure.step('Проверяем, что "job" в ответе соответствует "job", переданному в теле запроса'):
         assert response_json['job'] == BODY['job']
@@ -117,7 +117,7 @@ def test_update_user_patch_method():
     response_json = response.json()
     updated_date = response.json()['updatedAt'].replace('T', ' ')
     current_date = str(datetime.datetime.utcnow())              # Не понимаю, почему "utcnow" автоматически зачеркивается
-    validate(response_json, UPDATE_USER_SCHEME)
+    validate(response_json, UPDATED_USER_SCHEME)
     with allure.step('Проверяем, что "job" в ответе соответствует "job", переданному в теле запроса'):
         assert response_json['job'] == BODY['job']
     with allure.step('Проверяем, что "name" в ответе соответствует "name", переданному в теле запроса'):
